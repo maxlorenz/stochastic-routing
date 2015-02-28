@@ -28,7 +28,6 @@ complex double *fft(int n, complex double *f) {
 
 	int k;
 	for (k = 0; k <= n/2; k++) {
-		printf("k = %i, n/2 = %i\n", k, n/2);
 		c[k] 		= g[k] + u[k] * transform(n, k); 
 		c[k + n/2] 	= g[k] - u[k] * transform(n, k);
 	}
@@ -37,12 +36,12 @@ complex double *fft(int n, complex double *f) {
 }
 
 int main() {
-	complex double f[] = { 1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0 };
-	complex double *test = fft(8, f);
+	complex double f[] = { 1.3, 2.5, 3.1, 4.0 };
+	complex double *test = fft(4, f);
 
 	// DEBUG
 	int x;
-	for (x = 0; x < 8; x++) {
+	for (x = 0; x < 4; x++) {
 		printf("%f i%f\n", creal(test[x]), cimag(test[x]));	
 	}
 
