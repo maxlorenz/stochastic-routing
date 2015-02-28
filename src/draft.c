@@ -1,28 +1,38 @@
-#include "stdio.h"
+#include "stdio.h" // defines printf
 
-int main() {
+#define ARRAY_LENGTH(array) (&array)[1] - array
 
-	int f[] = { 5, 4, 0, 1 };
-	int g[] = { 1, 2, 7, 0 };
+void convolute(float f[], float g[]) {
 
-	int left = -3;
-	int right = 3;
+	// Convoluting two discrete functions with n values yields 2n - 1 results
+	// Because of this, I use ]-n, n[ as the index
+	int left = ARRAY_LENGTH(f) + 1; 
+	int right = - left; 			
 	int position;
-	int n, k;
+	int n;
 	
 	for (position = left; position <= right; position++) {
-		int from = position <= 0 ? 0 : position;
-		int to = position >= 0 ? right : right + position;
-		int sum = 0;
+
+		// Calculate range for which f and g are defined
+		int from = 	position <= 0 ? 0 		: position;
+		int to = 	position >= 0 ? right 	: right + position;
+
+		float sum = 0;
 	
 		for (n = from; n <= to; n++) {
 			sum += f[n] * g[n - position];
-			// printf("%i * %i\n", f[n], g[n - position]);
-
 		}
 		
-		printf("%i\n", sum);
+		printf("%f\n", sum);
 	}
+}
+
+int main() {
+
+	float f[] = { 0.5, 0.5 };
+	float g[] = { 0.5, 0.5 };
+	
+	convolute(f, g);
 
 	return 0;
 
