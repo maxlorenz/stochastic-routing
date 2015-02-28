@@ -1,0 +1,5 @@
+# Compiled c files
+*.out
+
+# VIM swap files
+*.swo
