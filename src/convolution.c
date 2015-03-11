@@ -1,3 +1,4 @@
+#include "convolution.h" // defines printf
 #include "stdio.h" // defines printf
 
 #define ARRAY_LENGTH(array) (&array)[1] - array
@@ -27,13 +28,3 @@ void convolute(float f[], float g[]) {
 	}
 }
 
-int main() {
-
-	float f[] = { 0.5, 0.5 };
-	float g[] = { 0.5, 0.5 };
-	
-	convolute(f, g);
-
-	return 0;
-
-}

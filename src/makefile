@@ -1,10 +1,7 @@
-all: draft fft
+all: main
 
-draft:
-	gcc -Wall draft.c -o draft.out
-
-fft:
-	gcc -lm -Wall fft.c -o fft.out
+main:
+	gcc -Wall main.c convolution.c -o main.out
 
 clean:
-	rm draft fft
+	rm main.out
