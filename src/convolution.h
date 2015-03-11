@@ -1,1 +1,1 @@
-void convolute(float f[], float g[]);
+float *convolute(float f[], float g[], int lenght);

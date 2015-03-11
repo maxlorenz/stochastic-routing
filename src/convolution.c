@@ -1,14 +1,17 @@
-#include "convolution.h" // defines printf
-#include "stdio.h" // defines printf
+#include <stdio.h>
+#include <stdlib.h>
 
-#define ARRAY_LENGTH(array) (&array)[1] - array
+#include "convolution.h"
 
-void convolute(float f[], float g[]) {
+float *convolute(float f[], float g[], int length) {
+
+	// Return array, convolution yields 2*n - 1 results
+	float *result = malloc((2*length - 1) * sizeof(float));
 
 	// Convoluting two discrete functions with n values yields 2n - 1 results
 	// Because of this, I use ]-n, n[ as the index
-	int left = ARRAY_LENGTH(f) + 1; 
-	int right = - left; 			
+	int right = length - 1; 			
+	int left = - right; 
 	int position;
 	int n;
 	
@@ -24,7 +27,9 @@ void convolute(float f[], float g[]) {
 			sum += f[n] * g[n - position];
 		}
 		
-		printf("%f\n", sum);
+		result[position + right] = sum;
 	}
+
+	return result;
 }
 
